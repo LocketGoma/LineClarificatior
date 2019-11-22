@@ -1,6 +1,8 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+
 
 using namespace std;
 
@@ -28,14 +30,14 @@ int main()
 	cin >> filename;
 
 
-	img = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
-	img_gray = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
+	img = cv::imread(filename, cv::IMREAD_COLOR);
+	img_gray = cv::imread(filename, cv::IMREAD_GRAYSCALE);
 
 	if (img.empty())
 	{
 		std::cout << "[!] 잘못된 경로입니다. 샘플 파일이 실행됩니다." << std::endl;
-		img = cv::imread("sample.jpg", CV_LOAD_IMAGE_COLOR);
-		img_gray = cv::imread("sample.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+		img = cv::imread("sample.jpg", cv::IMREAD_COLOR);
+		img_gray = cv::imread("sample.jpg", cv::IMREAD_GRAYSCALE);
 
 	}
 
@@ -121,7 +123,7 @@ void onMouse(int event, int x, int y, int flags, void* param) {
 
 
 	switch (event) {
-	case CV_EVENT_LBUTTONDOWN: {
+	case cv::EVENT_FLAG_LBUTTON: {
 		r = im->at<cv::Vec3b>(y, x)[2];
 		g = im->at<cv::Vec3b>(y, x)[1];
 		b = im->at<cv::Vec3b>(y, x)[0];
