@@ -37,3 +37,4 @@
 # visualstudio files
 .vcxproj
 .vcxproj.filters
+.vcxproj.user
